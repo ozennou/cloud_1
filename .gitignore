@@ -44,3 +44,4 @@ terraform.rc
 # planout
 
 secrets.sh
+.env
