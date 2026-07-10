@@ -21,7 +21,7 @@ if [[ -z "$IP" ]]; then
 fi
 echo "VM public IP: $IP"
 
-sed -i -E "s/ansible_host=[0-9]+(\.[0-9]+){3}/ansible_host=$IP/" "$INVENTORY"
+sed -i -E "/prd_eus_server_01/ s/ansible_host=[0-9]+(\.[0-9]+){3}/ansible_host=$IP/" "$INVENTORY"
 echo "Updated ansible_host in $INVENTORY"
 
 ansible-playbook -i "$INVENTORY" "$CONFIG_DIR/playbook.yml" --ask-vault-pass

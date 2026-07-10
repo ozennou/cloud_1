@@ -1,5 +1,5 @@
 - name: Setup Inception
-  hosts: prd_eus_server_01
+  hosts: prd_servers
   become: true
 
   roles:
