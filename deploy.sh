@@ -25,3 +25,5 @@ sed -i -E "s/ansible_host=[0-9]+(\.[0-9]+){3}/ansible_host=$IP/" "$INVENTORY"
 echo "Updated ansible_host in $INVENTORY"
 
 ansible-playbook -i "$INVENTORY" "$CONFIG_DIR/playbook.yml" --ask-vault-pass
+
+echo "Server is available at: https://$IP"

@@ -1,8 +1,6 @@
 FROM alpine:3.18
 
-RUN apk update
-
-RUN apk add --no-cache nginx \
+RUN apk update && apk add --no-cache nginx \
             openssl
 
 COPY conf/wordpress.conf /etc/nginx/http.d/wordpress.conf

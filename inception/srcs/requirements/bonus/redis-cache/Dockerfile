@@ -1,8 +1,6 @@
 FROM alpine:3.18
 
-RUN apk update
-
-RUN apk add --no-cache redis
+RUN apk update && apk add --no-cache redis
 
 COPY tools/script.sh /tmp/script.sh
 

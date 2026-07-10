@@ -1,11 +1,6 @@
 FROM alpine:3.18
 
-RUN apk update
-
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /bin/wp-cli.phar && \
-    chmod u+x /bin/wp-cli.phar
-
-RUN apk add --no-cache php81 \
+RUN apk update && apk add --no-cache php81 \
             php81-fpm        \
             php81-phar       \
             php81-curl       \
@@ -16,6 +11,9 @@ RUN apk add --no-cache php81 \
             mariadb-client   \
             php81-ctype      \
             redis
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /bin/wp-cli.phar && \
+    chmod u+x /bin/wp-cli.phar
 
 COPY conf/test.conf /etc/php81/php-fpm.d/www.conf
 
