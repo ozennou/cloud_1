@@ -1,0 +1,4 @@
+DOMAINNAME: "{{ ansible_host }}"
+HOSTNAME: "{{ ansible_host }}"
+
+TITLE: My WordPress Site

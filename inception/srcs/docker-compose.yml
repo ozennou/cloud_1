@@ -70,9 +70,11 @@ services:
       - HOSTNAME=$HOSTNAME
       - CRT_PATH=$CRT_PATH
     restart: unless-stopped
-    depends_on: 
+    depends_on:
       - wordpress
+      - phpmyadmin
     ports:
+      - "80:80"
       - "443:443"
 ######
 #bonus part
@@ -90,3 +92,16 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+  phpmyadmin:
+    image: "phpmyadmin:5.2.3"
+    container_name: phpmyadmin
+    networks:
+      - services_net
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+      - PMA_ABSOLUTE_URI=https://$HOSTNAME/phpmyadmin/
+      - UPLOAD_LIMIT=50M
+    restart: unless-stopped
+    depends_on:
+      - mariadb

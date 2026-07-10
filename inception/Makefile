@@ -7,7 +7,7 @@ all : up
 up :
 	$(MKDIR) /home/mozennou/data/wp
 	$(MKDIR) /home/mozennou/data/mariadb
-	docker compose -f ./srcs/docker-compose.yml up -d
+	docker compose -f ./srcs/docker-compose.yml up -d --build
 
 up_build :
 	$(MKDIR) /home/mozennou/data/wp

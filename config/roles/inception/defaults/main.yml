@@ -1,0 +1,2 @@
+inception_src: "{{ playbook_dir }}/../inception/"
+inception_dir: "/home/{{ ansible_user }}/inception"

@@ -1,0 +1,19 @@
+- name: Copy inception directory
+  copy:
+    src: "{{ inception_src }}"
+    dest: "{{ inception_dir }}/"
+    mode: "0755"
+
+- name: Install make
+  apt:
+    name: make
+    state: present
+
+- name: Render .env file on the VM
+  template:
+    src: env.j2
+    dest: "{{ inception_dir }}/srcs/.env"
+    mode: "0600"
+
+- name: Build and run the containers
+  shell: make -C {{ inception_dir }}/ up
